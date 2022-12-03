@@ -4,26 +4,13 @@ import Sidebar from './fragments/sidebar/sidebar';
 import './styles.css';
 
 function Home() {
-  const [berries, setBerries] = useState([]);
-
-  useEffect(()=>{
-    getBerries();
-  }, []);
-
-  const getBerries =  async() => {
-    const res = await fetch(
-      "https://pokeapi.co/api/v2/berry/"
-    );
-    const data = await res.json();
-    const berry = data.results;
-    setBerries(berry);
-  };
+  const [menu, setMenu] = useState(1);  
 
   return (
     <div>
       <section className='content-container'>
-        <Content berries={berries} />
-        <Sidebar />
+      <Content menu={menu}  />
+      <Sidebar onClick={setMenu}/>
       </section>
     </div>
   );

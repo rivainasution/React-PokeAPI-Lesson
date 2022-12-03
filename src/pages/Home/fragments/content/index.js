@@ -1,27 +1,62 @@
 import './styles.css';
+import Table from './Table';
 
-function Content (props) {
+function Content (prop) {
+  const content = () => {
+    if (prop.menu === 1) {
+      return (
+        <Table api="berry" /> 
+      );
+    }
+    else if(prop.menu === 2) {
+      return (
+        <Table api="contest-type" /> 
+      );
+    }
+    else if(prop.menu === 3) {
+      return (
+        <Table api="encounter-method" /> 
+      );
+    }
+    else if(prop.menu === 4) {
+      return (
+        <Table api="evolution-chain" /> 
+      );
+    }
+    else if(prop.menu === 5) {
+      return (
+        <Table api="generation" /> 
+      );
+    }
+    else if(prop.menu === 6) {
+      return (
+        <Table api="item" /> 
+      );
+    }
+    else if(prop.menu === 7) {
+      return (
+        <Table api="location" /> 
+      );
+    }
+    else if(prop.menu === 8) {
+      return (
+        <Table api="machine" /> 
+      );
+    }
+    else if(prop.menu === 9) {
+      return (
+        <Table api="move" /> 
+      );
+    }
+    else if(prop.menu === 10) {
+      return (
+        <Table api="ability" /> 
+      );
+    }
+  }
   return(
     <div className='content-wrapper'>
-      <h2>Pokemon List</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>No</th>
-            <th>Name</th>
-            <th>Url</th>
-          </tr>
-        </thead>
-        <tbody>
-          {props.berries.map((br, no) =>(
-            <tr key={br.name}>
-              <td>{no+1}</td>
-              <td>{br.name}</td>
-              <td>{br.url}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      {content()}
     </div>
   );
 }
