@@ -2,22 +2,25 @@ import { useEffect, useState } from "react";
 
 function Table (prop){
     const [data, setData] = useState([]);
-    const endpoint = prop.api;
+    let endpoint = prop.api;
+    const x = `https://pokeapi.co/api/v2/${endpoint}`;
 
     useEffect(()=>{
         getData();
-    }, []);
+    }, [data]);
 
     const getData =  async() => {
         const res = await fetch(`https://pokeapi.co/api/v2/${endpoint}`);
         const data = await res.json();
         const result = data.results;
+        console.log(result);
         setData(result);
     };
 
     return(
         <div>
             <h2>{endpoint} list</h2>
+            <h5>{x}</h5>
             <table>
                 <thead>
                 <tr>
@@ -27,11 +30,11 @@ function Table (prop){
                 </tr>
                 </thead>
                 <tbody>
-                {data.map((br, no) =>(
-                    <tr key={br.name}>
+                {data.map((call, no) =>(
+                    <tr key={call.name}>
                     <td>{no+1}</td>
-                    <td>{br.name}</td>
-                    <td>{br.url}</td>
+                    <td>{call.name}</td>
+                    <td>{call.url}</td>
                     </tr>
                 ))}
                 </tbody>

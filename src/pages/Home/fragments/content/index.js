@@ -1,5 +1,5 @@
+import Table from '../../../../components/Table';
 import './styles.css';
-import Table from './Table';
 
 function Content (prop) {
   const content = () => {
